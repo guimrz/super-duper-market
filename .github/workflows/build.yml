@@ -22,4 +22,4 @@ jobs:
     - name: Build
       run: dotnet build ./src/SuperDuperMarket.sln -c Release --no-restore
     - name: Test
-      run: dotnet test ./src/SuperDuperMarket.sln --no-build --verbosity normal "console;verbosity=detailed"
+      run: dotnet test ./src/SuperDuperMarket.sln --no-build --verbosity normal
