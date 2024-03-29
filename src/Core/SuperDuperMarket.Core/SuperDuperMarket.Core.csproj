@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\SuperDuperMarket.Core\SuperDuperMarket.Core.csproj" />
-  </ItemGroup>
-
 </Project>
