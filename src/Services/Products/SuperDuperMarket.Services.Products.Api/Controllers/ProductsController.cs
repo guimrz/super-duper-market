@@ -1,11 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SuperDuperMarket.Core;
-using SuperDuperMarket.Services.Products.Application.Commands.CreateProduct;
-using SuperDuperMarket.Services.Products.Application.Commands.DeleteProduct;
+using SuperDuperMarket.Services.Products.Application.Commands;
 using SuperDuperMarket.Services.Products.Application.Objects.Requests;
 using SuperDuperMarket.Services.Products.Application.Objects.Responses;
-using SuperDuperMarket.Services.Products.Application.Queries.GetProducts;
+using SuperDuperMarket.Services.Products.Application.Queries;
 
 namespace SuperDuperMarket.Services.Products.Api.Controllers
 {

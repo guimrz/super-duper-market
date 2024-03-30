@@ -15,6 +15,22 @@ namespace SuperDuperMarket.Services.Products.Repository.TypeConfigurations
                 .HasMaxLength(256)
                 .IsRequired();
 
+            builder.Property(product => product.Description);
+
+            builder.Property(product => product.Stock);
+
+            builder.HasOne(product => product.ProductType)
+                .WithMany()
+                .HasForeignKey(product => product.ProductTypeId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(product => product.Brand)
+                .WithMany()
+                .HasForeignKey(product => product.BrandId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+
             builder.Property(product => product.CreationDate)
                 .IsRequired()
                 .ValueGeneratedOnAdd();

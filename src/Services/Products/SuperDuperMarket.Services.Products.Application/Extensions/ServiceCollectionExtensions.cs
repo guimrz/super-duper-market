@@ -11,6 +11,8 @@ namespace SuperDuperMarket.Services.Products.Application.Extensions
             services.AddAutoMapper(config =>
             {
                 config.AddProfile<ProductMapProfile>();
+                config.AddProfile<ProductTypeMapProfile>();
+                config.AddProfile<BrandMapProfile>();
             });
 
             services.AddMediatR(config =>
