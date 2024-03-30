@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SuperDuperMarket.Core;
 using SuperDuperMarket.Services.Products.Application.Commands.CreateProduct;
+using SuperDuperMarket.Services.Products.Application.Commands.DeleteProduct;
 using SuperDuperMarket.Services.Products.Application.Objects.Requests;
 using SuperDuperMarket.Services.Products.Application.Objects.Responses;
 using SuperDuperMarket.Services.Products.Application.Queries.GetProducts;
@@ -29,6 +30,15 @@ namespace SuperDuperMarket.Services.Products.Api.Controllers
             var result = await mediator.Send(new CreateProductCommand(request), cancellationToken);
 
             return new ObjectResult(result);
+        }
+
+        [HttpDelete("{productId:guid}")]
+        [ProducesResponseType(200)]
+        public async Task<IActionResult> DeleteProductAsync(Guid productId, CancellationToken cancellationToken = default)
+        {
+            await mediator.Send(new DeleteProductCommand(productId), cancellationToken);
+
+            return Ok();
         }
     }
 }
