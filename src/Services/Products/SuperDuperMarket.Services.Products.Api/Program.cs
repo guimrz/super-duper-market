@@ -12,6 +12,9 @@ namespace SuperDuperMarket.Services.Products.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Configuration
+                .AddEnvironmentVariables();
+
             // Add services to the container.
             builder.Services.AddControllers();
             builder.Services.AddProductsApplication();
