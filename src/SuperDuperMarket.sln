@@ -9,21 +9,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Products", "Products", "{D5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{186EE439-6C5F-475F-A3DD-554B770E4DC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperDuperMarket.Core.EntityFrameworkCore", "Core\SuperDuperMarket.Core.EntityFrameworkCore\SuperDuperMarket.Core.EntityFrameworkCore.csproj", "{5DFFDF13-594B-4F0A-AC13-A6FEEDFA2E26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperDuperMarket.Core.EntityFrameworkCore", "Core\SuperDuperMarket.Core.EntityFrameworkCore\SuperDuperMarket.Core.EntityFrameworkCore.csproj", "{5DFFDF13-594B-4F0A-AC13-A6FEEDFA2E26}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperDuperMarket.Services.Products.Domain", "Services\Products\SuperDuperMarket.Services.Products.Domain\SuperDuperMarket.Services.Products.Domain.csproj", "{CDE7D3CA-425D-4573-9182-28401F7BCD68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperDuperMarket.Core", "Core\SuperDuperMarket.Core\SuperDuperMarket.Core.csproj", "{E9AD85CB-4338-41DA-8FE4-7A95164FAC45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperDuperMarket.Core", "Core\SuperDuperMarket.Core\SuperDuperMarket.Core.csproj", "{E9AD85CB-4338-41DA-8FE4-7A95164FAC45}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperDuperMarket.Services.Products.Application", "Services\Products\SuperDuperMarket.Services.Products.Application\SuperDuperMarket.Services.Products.Application.csproj", "{85051636-71C2-4E93-96BC-C333A349A5C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperDuperMarket.Services.Products.Repository", "Services\Products\SuperDuperMarket.Services.Products.Repository\SuperDuperMarket.Services.Products.Repository.csproj", "{A01B2900-9A0F-45BF-8EE9-3B2ED2E81EE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperDuperMarket.Services.Products.Repository", "Services\Products\SuperDuperMarket.Services.Products.Repository\SuperDuperMarket.Services.Products.Repository.csproj", "{A01B2900-9A0F-45BF-8EE9-3B2ED2E81EE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperDuperMarket.Services.Products.Api", "Services\Products\SuperDuperMarket.Services.Products.Api\SuperDuperMarket.Services.Products.Api.csproj", "{9DD9C833-AE4A-477E-8B7C-236BAF5C9B25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperDuperMarket.Services.Products.Api", "Services\Products\SuperDuperMarket.Services.Products.Api\SuperDuperMarket.Services.Products.Api.csproj", "{9DD9C833-AE4A-477E-8B7C-236BAF5C9B25}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{A3339645-AA56-4373-B390-B5555F6BC61F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperDuperMarket.Services.Gateway.Api", "Services\Gateway\SuperDuperMarket.Services.Gateway.Api\SuperDuperMarket.Services.Gateway.Api.csproj", "{41197DE7-7EF1-4979-AE9F-D7DCAB4F0C46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperDuperMarket.Services.Gateway.Api", "Services\Gateway\SuperDuperMarket.Services.Gateway.Api\SuperDuperMarket.Services.Gateway.Api.csproj", "{41197DE7-7EF1-4979-AE9F-D7DCAB4F0C46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

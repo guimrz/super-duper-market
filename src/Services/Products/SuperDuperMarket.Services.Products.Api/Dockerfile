@@ -10,6 +10,11 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Services/Products/SuperDuperMarket.Services.Products.Api/SuperDuperMarket.Services.Products.Api.csproj", "Services/Products/SuperDuperMarket.Services.Products.Api/"]
+COPY ["Services/Products/SuperDuperMarket.Services.Products.Application/SuperDuperMarket.Services.Products.Application.csproj", "Services/Products/SuperDuperMarket.Services.Products.Application/"]
+COPY ["Services/Products/SuperDuperMarket.Services.Products.Domain/SuperDuperMarket.Services.Products.Domain.csproj", "Services/Products/SuperDuperMarket.Services.Products.Domain/"]
+COPY ["Core/SuperDuperMarket.Core/SuperDuperMarket.Core.csproj", "Core/SuperDuperMarket.Core/"]
+COPY ["Services/Products/SuperDuperMarket.Services.Products.Repository/SuperDuperMarket.Services.Products.Repository.csproj", "Services/Products/SuperDuperMarket.Services.Products.Repository/"]
+COPY ["Core/SuperDuperMarket.Core.EntityFrameworkCore/SuperDuperMarket.Core.EntityFrameworkCore.csproj", "Core/SuperDuperMarket.Core.EntityFrameworkCore/"]
 RUN dotnet restore "./Services/Products/SuperDuperMarket.Services.Products.Api/./SuperDuperMarket.Services.Products.Api.csproj"
 COPY . .
 WORKDIR "/src/Services/Products/SuperDuperMarket.Services.Products.Api"
