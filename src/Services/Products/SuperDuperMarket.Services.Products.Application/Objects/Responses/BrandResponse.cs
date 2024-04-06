@@ -1,4 +1,5 @@
 ﻿# nullable disable
+
 namespace SuperDuperMarket.Services.Products.Application.Objects.Responses
 {
     public class BrandResponse

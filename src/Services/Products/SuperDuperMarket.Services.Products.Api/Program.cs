@@ -1,52 +1,33 @@
-using Microsoft.EntityFrameworkCore;
-using SuperDuperMarket.Core.EntityFrameworkCore.Extensions;
-using SuperDuperMarket.Services.Products.Application.Extensions;
-using SuperDuperMarket.Services.Products.Repository;
-using SuperDuperMarket.Services.Products.Repository.Extensions;
+using SuperDuperMarket.Services.Products.Api.Extensions;
+using Serilog;
 
-namespace SuperDuperMarket.Services.Products.Api
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
+
+Log.Information("Starting up");
+
+try
 {
-    public class Program
-    {
-        public static async Task Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+    var builder = WebApplication.CreateBuilder(args);
 
-            builder.Configuration
-                .AddEnvironmentVariables();
+    builder.Host.UseSerilog((ctx, lc) => lc
+        .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
+        .Enrich.FromLogContext()
+        .ReadFrom.Configuration(ctx.Configuration));
 
-            // Add services to the container.
-            builder.Services.AddControllers();
-            builder.Services.AddProductsApplication();
-            builder.Services.AddProductsRepository(config => config.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    var app = builder.ConfigureServices();
+    await app.ConfigurePipeline();
 
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+    await app.RunAsync();
 
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI(config =>
-                {
-                    config.DefaultModelsExpandDepth(-1); // Hide schemas models
-                });
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-            app.MapControllers();
-
-            // Configure database
-            await app.MigrateDatabaseAsync<ProductsDbContext>();
-            await app.SeedDatabaseAsync();
-
-            app.Run();
-        }
-    }
+}
+catch (Exception ex) when (ex is not HostAbortedException)
+{
+    Log.Fatal(ex, "Unhandled exception");
+}
+finally
+{
+    Log.Information("Shut down complete");
+    Log.CloseAndFlush();
 }

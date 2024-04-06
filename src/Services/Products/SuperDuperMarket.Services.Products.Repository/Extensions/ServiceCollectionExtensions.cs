@@ -18,7 +18,11 @@ namespace SuperDuperMarket.Services.Products.Repository.Extensions
             services.TryAddScoped<IRepository<Brand>>(serviceProvider => new Repository<Brand>(serviceProvider.GetRequiredService<ProductsDbContext>()));
             services.AddDbContext<ProductsDbContext>(optionsAction);
 
-            // Register seeds
+            return services;
+        }
+
+        public static IServiceCollection AddProductsServiceSeeding(this IServiceCollection services)
+        {
             services.TryAddTransient<ISeedingService, ProductTypeSeed>();
 
             return services;

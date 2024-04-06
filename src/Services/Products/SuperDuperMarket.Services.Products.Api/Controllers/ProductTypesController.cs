@@ -18,7 +18,7 @@ namespace SuperDuperMarket.Services.Products.Api.Controllers
         {
             var productTypes = await mediator.Send(new GetProductTypesQuery(), cancellationToken);
 
-            return Ok(productTypes);    
+            return Ok(productTypes);
         }
     }
 }

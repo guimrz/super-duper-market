@@ -1,5 +1,5 @@
-using Ocelot.Middleware;
 using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 namespace SuperDuperMarket.Services.Gateway.Api
 {
@@ -10,7 +10,7 @@ namespace SuperDuperMarket.Services.Gateway.Api
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Configuration.AddJsonFile("ocelot.json");
-            builder.Configuration.AddJsonFile($"ocelot.{builder.Environment.EnvironmentName}.json");
+            builder.Configuration.AddJsonFile($"ocelot.{builder.Environment.EnvironmentName}.json", true);
 
             builder.Services.AddOcelot();
 
@@ -21,7 +21,7 @@ namespace SuperDuperMarket.Services.Gateway.Api
             app.UseAuthorization();
 
             await app.UseOcelot();
-            
+
             app.Run();
         }
     }
