@@ -27,7 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperDuperMarket.Services.G
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{22FB6B6B-E7E0-49F1-B68A-1261477B673F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperDuperMarker.Services.Identity.Api", "Services\Identity\SuperDuperMarker.Services.Identity.Api\SuperDuperMarker.Services.Identity.Api.csproj", "{D95A6922-6D71-4414-89E6-3317AC72777F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperDuperMarker.Services.Identity.Api", "Services\Identity\SuperDuperMarker.Services.Identity.Api\SuperDuperMarker.Services.Identity.Api.csproj", "{D95A6922-6D71-4414-89E6-3317AC72777F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperDuperMarket.Services.Identity.Repository", "Services\Identity\SuperDuperMarket.Services.Identity.Repository\SuperDuperMarket.Services.Identity.Repository.csproj", "{7FD5F469-516D-486A-8749-8622C73FD20B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperDuperMarket.Services.Identity.Domains", "Services\Identity\SuperDuperMarket.Services.Identity.Domains\SuperDuperMarket.Services.Identity.Domains.csproj", "{32379BF1-A0CD-4616-B200-599CCF87E46F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +71,14 @@ Global
 		{D95A6922-6D71-4414-89E6-3317AC72777F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D95A6922-6D71-4414-89E6-3317AC72777F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D95A6922-6D71-4414-89E6-3317AC72777F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD5F469-516D-486A-8749-8622C73FD20B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD5F469-516D-486A-8749-8622C73FD20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD5F469-516D-486A-8749-8622C73FD20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD5F469-516D-486A-8749-8622C73FD20B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32379BF1-A0CD-4616-B200-599CCF87E46F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32379BF1-A0CD-4616-B200-599CCF87E46F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32379BF1-A0CD-4616-B200-599CCF87E46F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32379BF1-A0CD-4616-B200-599CCF87E46F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +95,8 @@ Global
 		{41197DE7-7EF1-4979-AE9F-D7DCAB4F0C46} = {A3339645-AA56-4373-B390-B5555F6BC61F}
 		{22FB6B6B-E7E0-49F1-B68A-1261477B673F} = {1A61D355-A5BD-4B12-B7B9-1B2DE86B0B75}
 		{D95A6922-6D71-4414-89E6-3317AC72777F} = {22FB6B6B-E7E0-49F1-B68A-1261477B673F}
+		{7FD5F469-516D-486A-8749-8622C73FD20B} = {22FB6B6B-E7E0-49F1-B68A-1261477B673F}
+		{32379BF1-A0CD-4616-B200-599CCF87E46F} = {22FB6B6B-E7E0-49F1-B68A-1261477B673F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10E92B6F-53C8-40EE-882E-B811768E533C}

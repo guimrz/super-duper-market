@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using SuperDuperMarker.Services.Identity.Api.Models;
+using SuperDuperMarket.Services.Identity.Domains;
 
 namespace SuperDuperMarker.Services.Identity.Api.Pages.Login
 {
@@ -19,8 +19,8 @@ namespace SuperDuperMarker.Services.Identity.Api.Pages.Login
     [AllowAnonymous]
     public class Index : PageModel
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IEventService _events;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
@@ -36,8 +36,8 @@ namespace SuperDuperMarker.Services.Identity.Api.Pages.Login
             IAuthenticationSchemeProvider schemeProvider,
             IIdentityProviderStore identityProviderStore,
             IEventService events,
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            UserManager<User> userManager,
+            SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -169,7 +169,7 @@ namespace SuperDuperMarker.Services.Identity.Api.Pages.Login
 
                 if (!local)
                 {
-                    View.ExternalProviders = new[] { new ViewModel.ExternalProvider(authenticationScheme: context.IdP) };
+                    View.ExternalProviders = [new ViewModel.ExternalProvider(authenticationScheme: context.IdP)];
                 }
 
                 return;
@@ -210,7 +210,7 @@ namespace SuperDuperMarker.Services.Identity.Api.Pages.Login
             {
                 AllowRememberLogin = LoginOptions.AllowRememberLogin,
                 EnableLocalLogin = allowLocal && LoginOptions.AllowLocalLogin,
-                ExternalProviders = providers.ToArray()
+                ExternalProviders = [.. providers]
             };
         }
     }

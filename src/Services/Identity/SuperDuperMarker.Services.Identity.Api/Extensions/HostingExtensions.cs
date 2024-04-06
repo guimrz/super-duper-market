@@ -1,11 +1,13 @@
-using Duende.IdentityServer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using SuperDuperMarker.Services.Identity.Api.Data;
-using SuperDuperMarker.Services.Identity.Api.Models;
+using SuperDuperMarket.Core.EntityFrameworkCore.Abstractions;
+using SuperDuperMarket.Core.EntityFrameworkCore.Extensions;
+using SuperDuperMarket.Services.Identity.Domains;
+using SuperDuperMarket.Services.Identity.Repository;
+using SuperDuperMarket.Services.Identity.Repository.Seeds;
 
-namespace SuperDuperMarker.Services.Identity.Api
+namespace SuperDuperMarker.Services.Identity.Api.Extensions
 {
     internal static class HostingExtensions
     {
@@ -13,13 +15,11 @@ namespace SuperDuperMarker.Services.Identity.Api
         {
             builder.Services.AddRazorPages();
 
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddDbContext<IdentityServiceDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddIdentityApiEndpoints<ApplicationUser>();
-
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            builder.Services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<IdentityServiceDbContext>()
                 .AddDefaultTokenProviders();
 
             builder.Services
@@ -36,14 +36,19 @@ namespace SuperDuperMarker.Services.Identity.Api
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
-                .AddAspNetIdentity<ApplicationUser>();
+                .AddAspNetIdentity<User>();
 
             builder.Services.AddAuthentication();
+
+            if (builder.Environment.IsDevelopment())
+            {
+                builder.Services.AddScoped<ISeedingService, DefaultUsersSeed>();
+            }
 
             return builder.Build();
         }
 
-        public static WebApplication ConfigurePipeline(this WebApplication app)
+        public static async Task<WebApplication> ConfigurePipeline(this WebApplication app)
         {
             app.UseSerilogRequestLogging();
 
@@ -59,6 +64,11 @@ namespace SuperDuperMarker.Services.Identity.Api
 
             app.MapRazorPages()
                 .RequireAuthorization();
+
+
+            // Configure database
+            await app.MigrateDatabaseAsync<IdentityServiceDbContext>();
+            await app.SeedDatabaseAsync();
 
             return app;
         }

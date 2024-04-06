@@ -5,7 +5,6 @@ using System.Diagnostics.Metrics;
 
 namespace SuperDuperMarker.Services.Identity.Api.Pages
 {
-#pragma warning disable CA1034 // Nested types should not be visible
 #pragma warning disable CA1724 // Type names should not match namespaces
 
     /// <summary>
@@ -25,8 +24,6 @@ namespace SuperDuperMarker.Services.Identity.Api.Pages
         /// </summary>
         public static class Metrics
         {
-#pragma warning disable 1591
-
             /// <summary>
             /// Name of Counters
             /// </summary>
@@ -60,12 +57,10 @@ namespace SuperDuperMarker.Services.Identity.Api.Pages
                 public const string Denied = "denied";
             }
 
-#pragma warning restore 1591
-
             /// <summary>
             /// Meter for the IdentityServer host project
             /// </summary>
-            private static readonly Meter Meter = new Meter(ServiceName, ServiceVersion);
+            private static readonly Meter Meter = new (ServiceName, ServiceVersion);
 
             private static Counter<long> ConsentCounter = Meter.CreateCounter<long>(Counters.Consent);
 
