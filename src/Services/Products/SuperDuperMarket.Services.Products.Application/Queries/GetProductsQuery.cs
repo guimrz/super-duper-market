@@ -12,7 +12,6 @@ public class GetProductsQuery(int pageSize = 20, int pageNumber = 1) : IRequest<
     public int PageNumber { get; set; } = pageNumber;
 }
 
-
 public class GetProductsQueryHandler(IRepository<Product> repository, IMapper mapper) : IRequestHandler<GetProductsQuery, IEnumerable<ProductResponse>>
 {
     protected readonly IRepository<Product> repository = Throw.IfNull(repository);
