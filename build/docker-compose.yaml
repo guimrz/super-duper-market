@@ -13,7 +13,7 @@ services:
             - '1433'
         ports:
             - "61099:1433"     
-            
+      
     gateway:
         image: gateway:latest
         container_name: gateway
