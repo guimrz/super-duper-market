@@ -1,3 +1,4 @@
+using Duende.IdentityServer.EntityFramework.DbContexts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -33,9 +34,14 @@ namespace SuperDuperMarker.Services.Identity.Api.Extensions
                     // see https://docs.duendesoftware.com/identityserver/v6/fundamentals/resources/
                     options.EmitStaticAudienceClaim = true;
                 })
-                .AddInMemoryIdentityResources(Config.IdentityResources)
-                .AddInMemoryApiScopes(Config.ApiScopes)
-                .AddInMemoryClients(Config.Clients)
+                .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = contextBuilder =>
+                    {
+                        contextBuilder.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), 
+                            sql => sql.MigrationsAssembly(typeof(IdentityServiceDbContext).Assembly.GetName().Name));
+                    };
+                })
                 .AddAspNetIdentity<User>();
 
             builder.Services.AddAuthentication();
@@ -68,6 +74,7 @@ namespace SuperDuperMarker.Services.Identity.Api.Extensions
 
             // Configure database
             await app.MigrateDatabaseAsync<IdentityServiceDbContext>();
+            await app.MigrateDatabaseAsync<ConfigurationDbContext>();
             await app.SeedDatabaseAsync();
 
             return app;
