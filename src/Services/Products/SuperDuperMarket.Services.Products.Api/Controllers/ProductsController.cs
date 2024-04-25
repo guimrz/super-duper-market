@@ -13,6 +13,13 @@ namespace SuperDuperMarket.Services.Products.Api.Controllers
     {
         protected readonly IMediator mediator = Throw.IfNull(mediator);
 
+        /// <summary>
+        /// Get the products.
+        /// </summary>
+        /// <param name="pageNumber">The page number.</param>
+        /// <param name="pageSize">The number of records to be returned.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The collection of products.</returns>
         [HttpGet]
         [ProducesResponseType<IEnumerable<ProductResponse>>(200)]
         public async Task<IActionResult> GetProductsAsync(int pageNumber = 1, int pageSize = 20, CancellationToken cancellationToken = default)
@@ -22,6 +29,12 @@ namespace SuperDuperMarket.Services.Products.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Create product.
+        /// </summary>
+        /// <param name="request">The product information.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The product that was created.</returns>
         [HttpPost]
         [ProducesResponseType<ProductResponse>(201)]
         public async Task<IActionResult> CreateProductAsync([FromBody] CreateProductRequest request, CancellationToken cancellationToken = default)
@@ -31,6 +44,11 @@ namespace SuperDuperMarket.Services.Products.Api.Controllers
             return new ObjectResult(result);
         }
 
+        /// <summary>
+        /// Delete the product.
+        /// </summary>
+        /// <param name="productId">The product identifier.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         [HttpDelete("{productId:guid}")]
         [ProducesResponseType(200)]
         public async Task<IActionResult> DeleteProductAsync(Guid productId, CancellationToken cancellationToken = default)

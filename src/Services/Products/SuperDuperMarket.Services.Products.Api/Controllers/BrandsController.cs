@@ -12,6 +12,11 @@ namespace SuperDuperMarket.Services.Products.Api.Controllers
     {
         protected readonly IMediator mediator = Throw.IfNull(mediator);
 
+        /// <summary>
+        /// Get all the brands.
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The collection of brands.</returns>
         [HttpGet]
         [ProducesResponseType<IEnumerable<BrandResponse>>((int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetBrandsAsync(CancellationToken cancellationToken = default)
